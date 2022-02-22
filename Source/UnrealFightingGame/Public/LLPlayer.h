@@ -20,6 +20,8 @@ public:
 
 	bool sprinting;
 
+	bool roll;
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -47,8 +49,8 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void StopSparring();
 	
-	//UFUNCTION(BlueprintCallable, Category = LL)
-	//	void Rolling();
+	UFUNCTION(BlueprintCallable, Category = LL)
+		void Rolling();
 	
 	UPROPERTY(BlueprintReadOnly, Category = LL)
 		float sensitivity;

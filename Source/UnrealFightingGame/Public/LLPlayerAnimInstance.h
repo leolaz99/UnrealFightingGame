@@ -17,14 +17,14 @@ protected:
 
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
-	//UFUNCTION(BlueprintCallable, Category = LL)
-	//	void CheckRoll();
+	UFUNCTION(BlueprintCallable, Category = LL)
+		void CheckRoll();
 
 	UPROPERTY(BlueprintReadOnly, Category = LL)
 		bool isSparring;
 
-	//UPROPERTY(BlueprintReadOnly, Category = LL)
-	//	bool isRolling;
+	UPROPERTY(BlueprintReadOnly, Category = LL)
+		bool isRolling;
 
 	ALLPlayer* characterInstance;
 };

@@ -16,4 +16,15 @@ void ULLPlayerAnimInstance::NativeInitializeAnimation()
 void ULLPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
 	Super::NativeUpdateAnimation(DeltaSeconds);
+
+	if (pawnOwner != nullptr)
+	{
+		isSparring = characterInstance->sparring;
+		isRolling = characterInstance->roll;
+	}
+}
+
+void ULLPlayerAnimInstance::CheckRoll()
+{
+	characterInstance->roll = false;
 }

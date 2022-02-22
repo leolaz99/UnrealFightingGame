@@ -97,13 +97,28 @@ void ALLPlayer::StopSparring()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 }
 
+void ALLPlayer::Rolling()
+{
+	FVector rollDirection = GetLastMovementInputVector();
+
+	if (roll == false && !rollDirection.IsZero())
+	{
+		FRotator MovementRotation = rollDirection.Rotation();
+		SetActorRotation(MovementRotation);
+
+		StopSprint();
+		StopSparring();
+		roll = true;
+	}
+}
+
 void ALLPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 	CheckSprint(actualVerticalAxis, actualHorizontalAxis);
 
-	if (sparring /* && !roll*/)
+	if (sparring && !roll)
 	{
 		sensitivity = sparringSensitivity;
 		bUseControllerRotationYaw = true;
@@ -111,7 +126,7 @@ void ALLPlayer::Tick(float DeltaTime)
 		playerCamera->SetFOV(NewFOV);
 	}
 
-	if (!sparring /*|| roll*/)
+	if (!sparring || roll)
 	{
 		float NewFOV = FMath::FInterpTo(playerCamera->GetFOVAngle(), normalFOV, DeltaTime, fovChangeSpeed);
 		playerCamera->SetFOV(NewFOV);
