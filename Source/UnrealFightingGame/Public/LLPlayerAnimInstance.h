@@ -20,11 +20,17 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void CheckRoll();
 
+	UFUNCTION(BlueprintCallable, Category = LL)
+		void CheckAttack();
+
 	UPROPERTY(BlueprintReadOnly, Category = LL)
 		bool isSparring;
 
 	UPROPERTY(BlueprintReadOnly, Category = LL)
 		bool isRolling;
+
+	UPROPERTY(BlueprintReadOnly, Category = LL)
+		bool isAttacking;
 
 	ALLPlayer* characterInstance;
 };

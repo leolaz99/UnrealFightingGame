@@ -20,7 +20,11 @@ public:
 
 	bool sprinting;
 
-	bool roll;
+	bool rolling;
+
+	bool attacking;
+	
+	void SetNormalSpeed();
 
 protected:
 	virtual void BeginPlay() override;
@@ -51,6 +55,9 @@ protected:
 	
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void Rolling();
+
+	UFUNCTION(BlueprintCallable, Category = LL)
+		void Attack();
 	
 	UPROPERTY(BlueprintReadOnly, Category = LL)
 		float sensitivity;
@@ -85,6 +92,7 @@ protected:
 	APlayerCameraManager* playerCamera;
 	USpringArmComponent* springArm;
 	UCharacterMovementComponent* movComp;
+
 
 public:	
 	virtual void Tick(float DeltaTime) override;

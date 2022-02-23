@@ -20,11 +20,18 @@ void ULLPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	if (pawnOwner != nullptr)
 	{
 		isSparring = characterInstance->sparring;
-		isRolling = characterInstance->roll;
+		isRolling = characterInstance->rolling;
+		isAttacking = characterInstance->attacking;
 	}
 }
 
 void ULLPlayerAnimInstance::CheckRoll()
 {
-	characterInstance->roll = false;
+	characterInstance->rolling = false;
+}
+
+void ULLPlayerAnimInstance::CheckAttack()
+{
+	characterInstance->attacking = false;
+	characterInstance->SetNormalSpeed();
 }

@@ -54,12 +54,15 @@ void ALLPlayer::MoveCameraHorizontal(float axisValue)
 
 void ALLPlayer::StartSprint()
 {
-	sprinting = true;
-	StopSparring();
-
-	if (!sparring)
+	if (!rolling && !attacking)
 	{
-		GetCharacterMovement()->MaxWalkSpeed = sprintSpeed;
+		sprinting = true;
+		StopSparring();
+
+		if (!sparring)
+		{
+			GetCharacterMovement()->MaxWalkSpeed = sprintSpeed;
+		}
 	}
 }
 
@@ -87,29 +90,53 @@ void ALLPlayer::StartSparring()
 
 void ALLPlayer::StopSparring()
 {
-	if (!sprinting)
-		GetCharacterMovement()->MaxWalkSpeed = normalSpeed;
-
-	bUseControllerRotationYaw = false;
 	sparring = false;
-	sensitivity = normalSensitivity;
+	if (!attacking) 
+	{
+		if (!sprinting)
+			GetCharacterMovement()->MaxWalkSpeed = normalSpeed;
 
-	GetCharacterMovement()->bOrientRotationToMovement = true;
+		bUseControllerRotationYaw = false;
+		sensitivity = normalSensitivity;
+
+		GetCharacterMovement()->bOrientRotationToMovement = true;
+	}
 }
 
 void ALLPlayer::Rolling()
 {
 	FVector rollDirection = GetLastMovementInputVector();
 
-	if (roll == false && !rollDirection.IsZero())
+	if (rolling == false && !rollDirection.IsZero())
 	{
 		FRotator MovementRotation = rollDirection.Rotation();
 		SetActorRotation(MovementRotation);
 
 		StopSprint();
 		StopSparring();
-		roll = true;
+		rolling = true;
 	}
+}
+
+void ALLPlayer::Attack()
+{
+	if (sparring && !attacking) 
+	{
+		attacking = true;
+		GetCharacterMovement()->MaxWalkSpeed = 0;
+	}		
+}
+
+void ALLPlayer::SetNormalSpeed()
+{
+	if (!sparring) 
+	{
+		GetCharacterMovement()->MaxWalkSpeed = normalSpeed;
+		StopSparring();
+	}
+		
+	else
+		GetCharacterMovement()->MaxWalkSpeed = sparringSpeed;
 }
 
 void ALLPlayer::Tick(float DeltaTime)
@@ -118,7 +145,7 @@ void ALLPlayer::Tick(float DeltaTime)
 
 	CheckSprint(actualVerticalAxis, actualHorizontalAxis);
 
-	if (sparring && !roll)
+	if (sparring && !rolling)
 	{
 		sensitivity = sparringSensitivity;
 		bUseControllerRotationYaw = true;
@@ -126,7 +153,7 @@ void ALLPlayer::Tick(float DeltaTime)
 		playerCamera->SetFOV(NewFOV);
 	}
 
-	if (!sparring || roll)
+	if (!sparring || rolling)
 	{
 		float NewFOV = FMath::FInterpTo(playerCamera->GetFOVAngle(), normalFOV, DeltaTime, fovChangeSpeed);
 		playerCamera->SetFOV(NewFOV);
