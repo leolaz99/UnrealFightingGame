@@ -3,7 +3,7 @@
 
 void ULLAttackNotify::NotifyTick(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float FrameDeltaTime)
 {
-	owner = Cast<ALLPlayer>(MeshComp->GetOwner());
+	owner = Cast<ACharacter>(MeshComp->GetOwner());
 	if (owner)
 	{
 		attack = owner->FindComponentByClass<ULLAttack>();
@@ -13,7 +13,7 @@ void ULLAttackNotify::NotifyTick(class USkeletalMeshComponent* MeshComp, class U
 
 void ULLAttackNotify::NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation)
 {
-	owner = Cast<ALLPlayer>(MeshComp->GetOwner());
+	owner = Cast<ACharacter>(MeshComp->GetOwner());
 	if (owner)
 	{
 		attack = owner->FindComponentByClass<ULLAttack>();
