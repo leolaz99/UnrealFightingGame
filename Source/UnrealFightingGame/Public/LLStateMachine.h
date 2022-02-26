@@ -15,7 +15,7 @@ public:
 	ULLStateMachine();
 
 	UFUNCTION(BlueprintCallable, Category = LL)
-		void TriggerTransition(const FGameplayTag& stateTag);
+		void TriggerTransition(const FGameplayTag stateTag);
 
 	UFUNCTION(BlueprintCallable, Category = LL)
 	FGameplayTag GetCurrentState() const 

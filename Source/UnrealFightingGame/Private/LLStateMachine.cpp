@@ -6,7 +6,7 @@ ULLStateMachine::ULLStateMachine()
 	PrimaryComponentTick.bCanEverTick = true;
 }
 
-void ULLStateMachine::TriggerTransition(const FGameplayTag& stateTag)
+void ULLStateMachine::TriggerTransition(const FGameplayTag stateTag)
 {
 	if (!States.Contains(stateTag)) 
 	{
