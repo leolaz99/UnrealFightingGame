@@ -29,13 +29,17 @@ void ULLAttack::Attack()
 	FCollisionQueryParams params;
 
 	bool isHit = UKismetSystemLibrary::SphereTraceSingle(GetWorld(), SocketLocation1, SocketLocation2, 5.f, UEngineTypes::ConvertToTraceType(ECC_Camera), false, actorsToIgnore,
-		EDrawDebugTrace::ForDuration, hitResult, true, FLinearColor::Red, FLinearColor::Green, 1.f);
+		EDrawDebugTrace::ForDuration, hitResult, true, FLinearColor::Red, FLinearColor::Green, 0.f);
 
 	if (isHit)
 	{
 		if (!isDamaged)
 		{
-			UGameplayStatics::ApplyDamage(hitResult.GetActor(), attributes->damage, NULL, NULL, NULL);
+			ULLAttributes* hittedAttributes = hitResult.GetActor()->FindComponentByClass<ULLAttributes>();
+
+			if (hittedAttributes)
+				hittedAttributes->RemoveHealth(attributes->damage);
+
 			isDamaged = true;
 		}
 	}

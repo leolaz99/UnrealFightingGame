@@ -19,7 +19,7 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void CheckAttack();
 
-	UPROPERTY(BlueprintReadOnly, Category = LL)
+	UPROPERTY(BlueprintReadWrite, Category = LL)
 	bool isAttacking;
 
 	ALLEnemy* characterInstance;
