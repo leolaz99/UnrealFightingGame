@@ -16,19 +16,19 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	//UPROPERTY(EditAnywhere)
-	//	UBehaviorTree* behaviorTree;
+	UPROPERTY(EditAnywhere)
+		UBehaviorTree* behaviorTree;
 
-	//UBlackboardComponent* myBlackboard;
+	UBlackboardComponent* myBlackboard;
 
 	UPROPERTY(EditAnywhere)
 		float attackRange;
 
-	//UPROPERTY(EditAnywhere)
-	//	FName blackboardPlayer;
+	UPROPERTY(EditAnywhere)
+		FName blackboardPlayer;
 
-	//UPROPERTY(EditAnywhere)
-	//	FName blackboardPlayerInRange;
+	UPROPERTY(EditAnywhere)
+		FName blackboardPlayerInRange;
 
 public:
 	virtual void Tick(float DeltaTime) override;

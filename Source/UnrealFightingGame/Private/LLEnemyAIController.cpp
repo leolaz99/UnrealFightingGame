@@ -14,8 +14,18 @@ void ALLEnemyAIController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//RunBehaviorTree(behaviorTree);
-	//myBlackboard = GetBlackboardComponent();
+	if (behaviorTree) 
+	{
+		RunBehaviorTree(behaviorTree);
+		myBlackboard = GetBlackboardComponent();
+	}	
+
+	TSubclassOf<ALLPlayer> classToFind;
+	classToFind = ALLPlayer::StaticClass();
+	TArray<AActor*> foundPlayer;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), classToFind, foundPlayer);
+
+	myBlackboard->SetValueAsObject(blackboardPlayer, foundPlayer[0]);
 }
 
 void ALLEnemyAIController::Tick(float DeltaTime)
@@ -28,9 +38,14 @@ void ALLEnemyAIController::Tick(float DeltaTime)
 	const float distanceToPlayer = controlledPawn->GetDistanceTo(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 
 	if (distanceToPlayer <= attackRange)
+	{
 		owner->attacking = true;
-		//myBlackboard->SetValueAsBool(blackboardPlayerInRange, true);
+		myBlackboard->SetValueAsBool(blackboardPlayerInRange, true);
+	}
+		
 	else
+	{
 		owner->attacking = false;
-		//myBlackboard->SetValueAsBool(blackboardPlayerInRange, false);
+		myBlackboard->SetValueAsBool(blackboardPlayerInRange, false);
+	}	
 }
