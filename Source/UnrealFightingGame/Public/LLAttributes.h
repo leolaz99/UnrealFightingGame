@@ -41,6 +41,9 @@ public:
 	UPROPERTY(EditAnywhere)
 		float damage;
 
+	UFUNCTION(BlueprintCallable, Category = LL)
+		void CheckLife(FName Map);
+
 protected:
 	UPROPERTY(EditAnywhere)
 		float currentHealth;
