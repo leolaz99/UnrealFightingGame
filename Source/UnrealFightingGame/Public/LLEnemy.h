@@ -15,6 +15,12 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere)
+		UAnimMontage* damageMontage;
+
+	UFUNCTION(BlueprintCallable, Category = LL)
+		void TakeDamage();
+
 public:	
 	virtual void Tick(float DeltaTime) override;
 

@@ -10,6 +10,11 @@ void ALLEnemy::BeginPlay()
 	Super::BeginPlay();
 }
 
+void ALLEnemy::TakeDamage()
+{
+	PlayAnimMontage(damageMontage, 1.f, FName("Default"));
+}
+
 void ALLEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
