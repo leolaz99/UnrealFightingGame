@@ -58,6 +58,9 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void Attack();
+
+	UFUNCTION(BlueprintCallable, Category = LL)
+		void TakeDamage();
 	
 	UPROPERTY(BlueprintReadOnly, Category = LL)
 		float sensitivity;
@@ -88,6 +91,9 @@ protected:
 	float actualHorizontalAxis;
 	
 	float normalFOV;
+
+	UPROPERTY(EditAnywhere)
+		UAnimMontage* damageMontage;
 
 	APlayerCameraManager* playerCamera;
 	USpringArmComponent* springArm;

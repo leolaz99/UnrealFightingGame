@@ -127,6 +127,11 @@ void ALLPlayer::Attack()
 	}		
 }
 
+void ALLPlayer::TakeDamage()
+{
+	PlayAnimMontage(damageMontage, 1.f, FName("Default"));
+}
+
 void ALLPlayer::SetNormalSpeed()
 {
 	if (!sparring) 
