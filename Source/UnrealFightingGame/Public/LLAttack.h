@@ -24,6 +24,9 @@ protected:
 	FHitResult hitResult;
 	ULLAttributes* attributes;
 
+	UPROPERTY(EditAnywhere)
+		USoundBase* puchSound;
+
 public:	
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;	
 

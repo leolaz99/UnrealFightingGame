@@ -39,6 +39,9 @@ void ULLAttack::Attack()
 			UGameplayStatics::ApplyDamage(hitResult.GetActor(), attributes->damage, NULL, NULL, NULL);
 
 			isDamaged = true;
+
+			if(puchSound)
+				UGameplayStatics::PlaySound2D(GetWorld(), puchSound, 1.f, 1.f, 0.f, NULL);
 		}
 	}
 }
