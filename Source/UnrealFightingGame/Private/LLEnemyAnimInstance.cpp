@@ -14,6 +14,7 @@ void ULLEnemyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	if (pawnOwner != nullptr)
 	{
 		isAttacking = characterInstance->attacking;
+		isStunned = characterInstance->stunning;
 	}
 }
 

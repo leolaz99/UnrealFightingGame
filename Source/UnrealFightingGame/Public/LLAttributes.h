@@ -23,10 +23,19 @@ public:
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void RemoveHealth(const float value);
 
+	UFUNCTION(BlueprintCallable, Category = LL)
+		void RemovePoise(const float value);
+
 	UFUNCTION(BlueprintPure, Category = LL)
 	float GetCurrentHealth() const
 	{
 		return currentHealth;
+	}
+
+	UFUNCTION(BlueprintPure, Category = LL)
+	float GetCurrentPoise() const
+	{
+		return poise;
 	}
 
 	UFUNCTION(BlueprintPure, Category = LL)
@@ -40,6 +49,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		float damage;
+
+	UPROPERTY(EditAnywhere)
+		float poise;
 
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void CheckLife(FName Map);

@@ -48,4 +48,6 @@ void ALLEnemyAIController::Tick(float DeltaTime)
 		owner->attacking = false;
 		myBlackboard->SetValueAsBool(blackboardPlayerInRange, false);
 	}	
+
+	myBlackboard->SetValueAsBool(blackboardStunned, owner->stunning);
 }

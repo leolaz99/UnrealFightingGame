@@ -30,6 +30,9 @@ protected:
 	UPROPERTY(EditAnywhere)
 		FName blackboardPlayerInRange;
 
+	UPROPERTY(EditAnywhere)
+		FName blackboardStunned;
+
 public:
 	virtual void Tick(float DeltaTime) override;
 	

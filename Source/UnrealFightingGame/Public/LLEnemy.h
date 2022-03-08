@@ -27,4 +27,6 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	bool attacking;
+
+	bool stunning;
 };

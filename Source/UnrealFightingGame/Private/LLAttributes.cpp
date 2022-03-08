@@ -1,4 +1,5 @@
 #include "LLAttributes.h"
+#include "LLEnemy.h"
 #include "Kismet/GameplayStatics.h"
 
 ULLAttributes::ULLAttributes()
@@ -21,6 +22,16 @@ void ULLAttributes::RemoveHealth(const float value)
 {
 	currentHealth -= value;
 	OnHealthChanged.Broadcast(value);
+}
+
+void ULLAttributes::RemovePoise(const float value)
+{
+	poise -= value;
+	if (FMath::IsNearlyEqual(GetCurrentPoise(), 0, 0.001f)) 
+	{
+		ALLEnemy* enemy = Cast<ALLEnemy>(GetOwner());
+		enemy->stunning = true;
+	}
 }
 
 void ULLAttributes::CheckLife(FName Map)

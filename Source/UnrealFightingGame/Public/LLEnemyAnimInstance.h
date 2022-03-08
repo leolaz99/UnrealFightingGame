@@ -22,5 +22,8 @@ protected:
 	UPROPERTY(BlueprintReadWrite, Category = LL)
 	bool isAttacking;
 
+	UPROPERTY(BlueprintReadWrite, Category = LL)
+	bool isStunned;
+
 	ALLEnemy* characterInstance;
 };
