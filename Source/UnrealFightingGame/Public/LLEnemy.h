@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "LLAttributes.h"
 #include "LLEnemy.generated.h"
 
 UCLASS()
@@ -20,6 +21,14 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void TakeDamage();
+
+	void StunTime();
+
+	UFUNCTION(BlueprintCallable, Category = LL)
+		void Stun(float stunTime);
+
+	FTimerHandle timerHandle;
+	ULLAttributes* attributes;
 
 public:	
 	virtual void Tick(float DeltaTime) override;
