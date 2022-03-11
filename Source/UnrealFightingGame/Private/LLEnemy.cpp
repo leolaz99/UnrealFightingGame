@@ -2,7 +2,7 @@
 
 ALLEnemy::ALLEnemy()
 {
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 }
 
 void ALLEnemy::BeginPlay()

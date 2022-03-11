@@ -4,7 +4,7 @@
 
 ULLAttributes::ULLAttributes()
 {
-	PrimaryComponentTick.bCanEverTick = true;
+	PrimaryComponentTick.bCanEverTick = false;
 }
 
 void ULLAttributes::BeginPlay()
@@ -15,7 +15,6 @@ void ULLAttributes::BeginPlay()
 void ULLAttributes::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
 }
 
 void ULLAttributes::RemoveHealth(const float value)

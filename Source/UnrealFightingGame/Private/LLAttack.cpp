@@ -4,7 +4,7 @@
 
 ULLAttack::ULLAttack()
 {
-	PrimaryComponentTick.bCanEverTick = true;
+	PrimaryComponentTick.bCanEverTick = false;
 }
 
 void ULLAttack::BeginPlay()
@@ -23,8 +23,8 @@ void ULLAttack::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 void ULLAttack::Attack()
 {
 	skeletalMesh = GetOwner()->FindComponentByClass<USkeletalMeshComponent>();
-	SocketLocation1 = skeletalMesh->GetSocketLocation("lowerarm_r");
-	SocketLocation2 = skeletalMesh->GetSocketLocation("middle_03_r");
+	SocketLocation1 = skeletalMesh->GetSocketLocation(initialBoneName);
+	SocketLocation2 = skeletalMesh->GetSocketLocation(finalBoneName);
 
 	FCollisionQueryParams params;
 

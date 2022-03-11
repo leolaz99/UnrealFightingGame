@@ -25,6 +25,12 @@ protected:
 	ULLAttributes* attributes;
 
 	UPROPERTY(EditAnywhere)
+	FName initialBoneName;
+
+	UPROPERTY(EditAnywhere)
+	FName finalBoneName;
+
+	UPROPERTY(EditAnywhere)
 		USoundBase* puchSound;
 
 public:	
