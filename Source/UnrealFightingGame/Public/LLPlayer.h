@@ -30,13 +30,13 @@ protected:
 	virtual void BeginPlay() override;
 
 	UFUNCTION(BlueprintCallable, Category = LL)
-		void MoveForward(float verticalAxis);
+		void MoveForward(const float verticalAxis);
 
 	UFUNCTION(BlueprintCallable, Category = LL)
-		void MoveHorizontal(float horizontalAxis);
+		void MoveHorizontal(const float horizontalAxis);
 
 	UFUNCTION(BlueprintCallable, Category = LL)
-		void MoveCameraHorizontal(float axisValue);
+		void MoveCameraHorizontal(const float axisValue);
 
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void StartSprint();
@@ -45,7 +45,7 @@ protected:
 		void StopSprint();
 	
 	UFUNCTION(BlueprintCallable, Category = LL)
-		void CheckSprint(float verticalAxisValue, float horizontalAxisValue);
+		void CheckSprint(const float verticalAxisValue, const float horizontalAxisValue);
 	
 	UFUNCTION(BlueprintCallable, Category = LL)
 		void StartSparring();

@@ -24,7 +24,7 @@ void ALLPlayer::BeginPlay()
 	normalFOV = playerCamera->GetFOVAngle();
 }
 
-void ALLPlayer::MoveForward(float verticalAxis)
+void ALLPlayer::MoveForward(const float verticalAxis)
 {
 	actualVerticalAxis = verticalAxis;
 	
@@ -35,7 +35,7 @@ void ALLPlayer::MoveForward(float verticalAxis)
 	movComp->AddInputVector(directionVector * verticalAxis, false);
 }
 
-void ALLPlayer::MoveHorizontal(float horizontalAxis)
+void ALLPlayer::MoveHorizontal(const float horizontalAxis)
 {
 	actualHorizontalAxis = horizontalAxis;
 
@@ -46,7 +46,7 @@ void ALLPlayer::MoveHorizontal(float horizontalAxis)
 	movComp->AddInputVector(directionVector * horizontalAxis, false);
 }
 
-void ALLPlayer::MoveCameraHorizontal(float axisValue)
+void ALLPlayer::MoveCameraHorizontal(const float axisValue)
 {
 	float horizontalSpeed = axisValue * sensitivity;
 	AddControllerYawInput(horizontalSpeed);
@@ -74,7 +74,7 @@ void ALLPlayer::StopSprint()
 		GetCharacterMovement()->MaxWalkSpeed = normalSpeed;
 }
 
-void ALLPlayer::CheckSprint(float verticalAxisValue, float horizontalAxisValue)
+void ALLPlayer::CheckSprint(const float verticalAxisValue, const float horizontalAxisValue)
 {
 	if (verticalAxisValue == 0 && horizontalAxisValue == 0 && sprinting == true)
 		StopSprint();

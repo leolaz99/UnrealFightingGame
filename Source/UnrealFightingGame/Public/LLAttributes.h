@@ -54,7 +54,7 @@ public:
 		float poise;
 
 	UFUNCTION(BlueprintCallable, Category = LL)
-		void CheckLife(FName Map);
+		void CheckLife(const FName Map);
 
 protected:
 	UPROPERTY(EditAnywhere)

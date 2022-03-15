@@ -33,7 +33,7 @@ void ULLAttributes::RemovePoise(const float value)
 	}
 }
 
-void ULLAttributes::CheckLife(FName Map)
+void ULLAttributes::CheckLife(const FName Map)
 {
 	if (FMath::IsNearlyEqual(GetCurrentHealth(), 0, 0.001f))
 		UGameplayStatics::OpenLevel(this, Map);

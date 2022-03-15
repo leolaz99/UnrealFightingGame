@@ -17,5 +17,5 @@ protected:
 	virtual void NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation) override;
 
 	ULLAttack* attack;
-	APawn* owner;
+	const APawn* owner;
 };
